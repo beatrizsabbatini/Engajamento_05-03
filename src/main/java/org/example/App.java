@@ -11,7 +11,7 @@ import java.util.Iterator;
 
 public class App {
 
-    private static Scanner sc = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
     private static Set<Aluno> listaAlunos = new HashSet<Aluno>();
     
     private static Iterator<Aluno> alunoIterator = listaAlunos.iterator();
@@ -27,7 +27,7 @@ public class App {
             System.out.println("[1] - Inserir Aluno");
             System.out.println("[2] - Imprimir Lista\n");
             System.out.println("[0] - Sair\n");
-            option = sc.nextLine();
+            option = scanner.nextLine();
 
             switch (option) {
                 case "1":
@@ -45,7 +45,7 @@ public class App {
 
     private static void inserirAluno() {
         System.out.println("Insira o nome: ");
-        String nome = sc.nextLine();
+        String nome = scanner.nextLine();
         if(verificaNomeExistente(nome)){
             listaAlunos.add(new Aluno(nome));
         }else{
@@ -65,7 +65,8 @@ public class App {
 
     private static void exibirLista() {
         System.out.println("----- Lista de nomes -----");
-        for (Aluno aluno : listaAlunos){
+        for (Iterator<Aluno> iterator = listaAlunos.iterator(); iterator.hasNext();){
+            Aluno aluno = iterator.next();
             System.out.println(aluno.getNome());
         }
     }
