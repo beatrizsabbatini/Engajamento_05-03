@@ -2,18 +2,23 @@ package org.example;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.Iterator;
 
 
 public class App {
 
     private static Scanner sc = new Scanner(System.in);
-    private static List<Aluno> listaAlunos = new ArrayList<Aluno>();
+    private static Set<Aluno> listaAlunos = new HashSet<Aluno>();
+    
+    private static Iterator<Aluno> alunoIterator = listaAlunos.iterator();
 
     public static void main(String[] args) {
 
-        int i = 0;
+        
         String option;
 
         do {
@@ -49,11 +54,12 @@ public class App {
     }
 
     private static boolean verificaNomeExistente(String nome){
-        for (Aluno aluno : listaAlunos){
-            if (aluno.getNome().equals(nome)){
+        for (Iterator<Aluno> iterator = listaAlunos.iterator(); iterator.hasNext();){
+            if (iterator.equals(nome)){
                 return false;
             }
         }
+        
         return true;
     }
 
